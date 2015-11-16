@@ -3,6 +3,12 @@
 	margin-left: auto;
     margin-right: auto;
 }
+.bold {
+	font-style:bold;
+}
+.italic {
+	font-style: italic;
+}
 .underline {
 	text-decoration: underline;
 
@@ -18,10 +24,7 @@
 .text-center {
   text-align: center;
 }
-.code-box {
-	background-color:#78747d;
-}
-
+/* colors for text */
 .blue {
 	color:blue;
 }
@@ -46,7 +49,7 @@
 .orange {
 	color:orange;
 }
-
+/* content boxes and buttons */
 .content-box-blue,
 .content-box-gray,
 .content-box-green,
@@ -166,3 +169,39 @@
     background-color: #ecb870;
     border: 1px solid #ecb870;
 }
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic|Raleway|Titillium+Web|Orbitron|Josefin+Slab|Poiret+One);
+/* fonts */
+.open-sans {
+	font-family: 'Open Sans', sans-serif;
+}
+.raleway {
+	font-family: 'Raleway', sans-serif;
+}
+.titillium-web {
+	font-family: 'Titillium Web', sans-serif;
+}
+.orbitron {
+	font-family: 'Orbitron', sans-serif;
+}
+.josefin-slab {
+	font-family: 'Josefin Slab', sans-serif;
+}
+.poriet-one {
+	font-family: 'Poiret One', sans-serif;
+}
+.300 {
+	font-weight: 300;
+}
+.400 {
+	font-weight: 400;
+}
+.600 {
+	font-weight: 600;
+}
+.700 {
+	font-weight: 700;
+}
+.800 {
+	font-weight: 800;
+}
+
