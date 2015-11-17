@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic|Raleway|Titillium+Web|Orbitron|Josefin+Slab|Poiret+One);
+
 .center {
 	display:block;
 	margin-left: auto;
@@ -169,7 +171,6 @@
     background-color: #ecb870;
     border: 1px solid #ecb870;
 }
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic|Raleway|Titillium+Web|Orbitron|Josefin+Slab|Poiret+One);
 /* fonts */
 .open-sans {
 	font-family: 'Open Sans', sans-serif;
