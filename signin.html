@@ -86,13 +86,9 @@
             </div>
           </div>
         </section>
-
-
-
-<button onclick="auth">click me</button>
 <script>
 function auth() {
-  var ref = new Firebase("https://jefffreymeng.firebaseio.com");
+  var ref = new Firebase("https://jeffreymeng.firebaseio.com");
   ref.authWithOAuthPopup("google", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
