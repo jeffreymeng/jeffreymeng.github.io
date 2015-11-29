@@ -92,7 +92,7 @@
 <button onclick="auth">click me</button>
 <script>
 function auth() {
-  var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
+  var ref = new Firebase("https://jefffreymeng.firebaseio.com");
   ref.authWithOAuthPopup("google", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
