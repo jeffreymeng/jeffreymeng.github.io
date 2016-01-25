@@ -21,7 +21,14 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- 1. Load webcomponents-lite.min.js for polyfill support. -->
+    <script src="/polymer/webcomponentsjs/webcomponents-lite.min.js">
+    </script>
 
+    <!-- 2. Use an HTML Import to bring in some elements. -->
+    <link rel="import" href="/polymer/paper-button/paper-button.html">
+    <link rel="import" href="/polymer/paper-input/paper-input.html">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,11 +54,14 @@
         <div class="row">
             <div class="box">
                 <div class="login">
-                    
+                    <h1 class="text-center">Jeffrey Login</h1>
+                    <paper-input label="Your name here"></paper-input>
+                    <paper-button>Say Hello</paper-button>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
