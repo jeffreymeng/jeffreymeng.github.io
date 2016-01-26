@@ -113,7 +113,7 @@
             for (i = 0; i < elements.length; i++) {
                 var po2 = document.createElement('link'); po2.rel = 'import';
                 po2.href = '/polymer/' + elements[i] + '/' + elements[i] + '.html';
-                var so = document.getElementsByTagName('link')[i]; so.parentNode.insertBefore(po2, so);
+                var so = document.getElementsByTagName('link')[i + 1]; so.parentNode.insertBefore(po2, so);
             }
           })();
     </script>
