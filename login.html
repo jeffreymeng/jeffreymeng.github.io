@@ -47,25 +47,27 @@
 <body>
     <div class="container">
         <div class="row">
-            <paper-card heading="Login" style="margin:10px">
-                <div class="box">
-                    <div class="login">
-                        <paper-input label="email address"></paper-input>
-                        <paper-input label="password" type="password"></paper-input>
-                        <paper-button style="background-color:#4285F5;color:white;">Log In</paper-button>
-                    </div>
-                </div>
-            </paper-card>
+            <div class="box">
+                <paper-card heading="Login" style="margin:10px">
+                        <div class="login">
+                            <paper-input label="email address"></paper-input>
+                            <paper-input label="password" type="password"></paper-input>
+                            <paper-button style="background-color:#4285F5;color:white;">Log In</paper-button>
+                        </div>
+                </paper-card>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
         (function() {
             var elements = [
+                /*
                 "paper-badge",
-                "paper-behaviors",
+                */
                 "paper-button",
                 "paper-card",
                 "paper-checkbox",
+                /*
                 "paper-dialog",
                 "paper-dialog-behavior",
                 "paper-dialog-scrollable",
@@ -75,16 +77,17 @@
                 "paper-header-panel",
                 "paper-header-panel",
                 "paper-icon-button",
+                */
                 "paper-input",
                 "paper-item",
                 "paper-listbox",
+                /*
                 "paper-material",
                 "paper-menu",
                 "paper-menu-button",
                 "paper-progress",
                 "paper-radio-button",
                 "paper-radio-group",
-                "paper-ripple",
                 "paper-scroll-header-panel",
                 "paper-slider",
                 "paper-spinner",
@@ -94,6 +97,7 @@
                 "paper-toggle-button",
                 "paper-toolbar",
                 "paper-tooltip"
+                */
             ];
             var po = document.createElement('script'); po.type = 'text/javascript';
                 po.src = '/polymer/webcomponentsjs/webcomponents-lite.min.js';
