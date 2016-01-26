@@ -65,6 +65,12 @@
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
     <script type="text/javascript">
+    function generateToken() {
+        var mask = '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        var result = '';
+        for (var i = 64; i > 0; --i) result += mask[Math.round(Math.random() * (mask.length - 1))];
+        return result;
+    }
     /* global Firebase */
         var loginOnClickAuth = function() {
             var password = $("#login-password").val();
@@ -79,8 +85,14 @@
                 console.log("Login Failed! " +  error);
               } else {
                 console.log("Authenticated successfully with payload:", authData);
+                var x = generateToken();
+                ref.child("auth").child("valid").child(x).set("true");
+                console.log(x);
+                
+                
               }
             });
+            
         };
         $("#login-submit").click(loginOnClickAuth);
         (function() {
