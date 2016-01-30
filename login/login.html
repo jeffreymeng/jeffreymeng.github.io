@@ -63,13 +63,11 @@
         // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
         function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
         var key = prompt("what is the key");
-        var ref = new Firebase("https://jeffreymeng.firebaseio.com/auth/valid");
-        ref.once("value", function(snapshot) {
+        var fb = new Firebase("https://jeffreymeng.firebaseio.com/auth/valid");
+        fb.once("value", function(snapshot) {
           var valid = snapshot.child(key).exists();
-          prompt(valid + "do you want to delete it?");
-          if (prompt === "yes") {
-              ref.snapshot(key).remove();
-          }
+          alert(valid);
+          
         });
     </script>
     <script type="text/javascript">
