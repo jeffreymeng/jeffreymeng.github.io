@@ -19,7 +19,7 @@
     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
   });
   tinymce.init({
-    selector: '#inline-test-editor',
+    selector: 'div.editable',
     inline: true
   });
  
@@ -28,7 +28,7 @@
 
 <body>
 <h1>Jeffrey's text editor test</h1>
-    <textarea id="mytextarea">Hello, World!</textarea>
-    <div id="inline-test-editor"><p>hello</p><p><b>This is bold</b><i>This is italic</i><b><i>this is ib</i></b></p></div>
+    <textarea id="myTextarea">Hello, World!</textarea>
+    <div class="editable"><p>hello</p><p><b>This is bold</b><i>This is italic</i><b><i>this is ib</i></b></p></div>
 </body>
 </html>
