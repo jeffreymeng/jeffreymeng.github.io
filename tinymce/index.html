@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='/tinymce/production/js/tinymce/tinymce.min.js'></script>
+    <script>
+        /* global tinymce */
+        
+        var fb = new Firebase("https://jeffreymeng.firebaseio.com/jdoc");
+        function saveToRevisionHistory(content) {
+            fb.transaction(function(currentRank) {
+               // If /users/fred/rank has never been set, currentRank will be null.
+              return currentRank+1;
+            });
+        }
+        tinymce.init({
+            selector: '#myTextarea',
+            theme: 'modern',
+            width: "100%",
+            height: "90%",
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality template paste textcolor'
+            ],
+            setup: function(editor) {
+                editor.addButton('Save to Revision History', {
+                    text: 'Save',
+                    icon: false,
+                    onclick: saveToRevisionHistory,
+                });
+                editor.onKeyUp.add(function(ed, e) {
+                  console.debug('Key up event: ' + e.keyCode);
+              });
+            },
+            content_css: 'css/content.css',
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor'
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to Jeffrey's Cloud Text Editor</h1>
+    <textarea id="myTextarea">You can type anything here!</textarea>
+    
+</body>
+
+</html>
