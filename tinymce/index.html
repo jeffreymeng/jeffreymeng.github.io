@@ -35,8 +35,8 @@
         };
         var fb = new Firebase("https://jeffreymeng.firebaseio.com/jdoc/");
 
-        function save(content) {
-            console.log(content)
+        function save() {
+            console.log($("#myTextarea_ifr").val())
             // fb.child(getUserInfo().user.child.id).child(getUserInfo.doc.safe.name).set(content);
         }
         tinymce.init({
@@ -55,7 +55,7 @@
                 editor.addButton('save', {
                     text: 'Save',
                     icon: 'save',
-                    onclick: function(){save($("#myTextarea_ifr").val());},
+                    onclick: function(){save();},
                 });
 
             },
