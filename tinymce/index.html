@@ -36,7 +36,7 @@
         var fb = new Firebase("https://jeffreymeng.firebaseio.com/jdoc/");
 
         function save() {
-            console.log($("#myTextarea_ifr").val())
+            console.log(tinyMCE.activeEditor.getContent())
             // fb.child(getUserInfo().user.child.id).child(getUserInfo.doc.safe.name).set(content);
         }
         tinymce.init({
