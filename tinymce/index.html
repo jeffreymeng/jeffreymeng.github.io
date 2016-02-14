@@ -49,7 +49,7 @@
                 editor.addButton('Save', {
                     text: 'Save',
                     icon: false,
-                    onclick: save($("#myTextarea").val()),
+                    onclick: function(){save($("#myTextarea").val());},
                 });
 
             },
