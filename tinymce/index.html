@@ -46,14 +46,14 @@
             ],
             autosave_interval: "2s",
             setup: function(editor) {
-                editor.addButton('save', {
-                    text: 'save',
-                    icon: false,
+                editor.addButton('SAVEbutton', {
+                    text: 'Save',
+                    icon: '<i class="fa fa-floppy-o"></i>',
                     onclick: function(){save($("#myTextarea").val());},
                 });
 
             },
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | save print preview media fullpage | forecolor backcolor'
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | SAVEbutton print preview media fullpage | forecolor backcolor'
         });
     </script>
 </head>
