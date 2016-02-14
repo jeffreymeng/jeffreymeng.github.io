@@ -42,18 +42,18 @@
             plugins: [
                 'advlist autolink autosave link image lists charmap colorpicker print preview hr anchor pagebreak spellchecker',
                 'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality template paste textcolor'
+                'table contextmenu directionality template paste textcolor'
             ],
             autosave_interval: "2s",
             setup: function(editor) {
-                editor.addButton('SAVEbutton', {
+                editor.addButton('save', {
                     text: 'Save',
                     icon: '<i class="fa fa-floppy-o"></i>',
                     onclick: function(){save($("#myTextarea").val());},
                 });
 
             },
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | SAVEbutton print preview media fullpage | forecolor backcolor'
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | save print preview media fullpage | forecolor backcolor'
         });
     </script>
 </head>
