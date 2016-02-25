@@ -16,9 +16,12 @@
         <style>
             body {
                 padding-top: 70px;
-                color: #ccffcc;
                 /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
             }
+        th > input[type=checkbox] {
+            text-align: center;
+            vertical-align: middle;
+        }
         </style>
     
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,7 +50,7 @@
     
                     <tr>
                         <td style="text-align: center; vertical-align: middle;">
-                            <input type="checkbox" name="query_myTextEditBox">
+                            <input type="checkbox">
                         </td>
     
                         <td>
@@ -55,18 +58,15 @@
                         </td>
     
                         <td>
-                            <select size="1" name="myTextEditBox_compare_operator">
-                                <option value="=">equals</option>
-                                <option value="<>">does not equal</option>
-                            </select>
+                            
                         </td>
     
                         <td>
-                            <input type="text" name="myTextEditBox_compare_value">
+                            <input type="text">
                         </td>
     
-                        <td style="text-align: center; vertical-align: middle;">
-                            <input type="checkbox" name="report_myTextEditBox" value="checked">
+                        <td>
+                            <input type="checkbox" id="report_myTextEditBox" value="checked">
                         </td>
     
                     </tr>
