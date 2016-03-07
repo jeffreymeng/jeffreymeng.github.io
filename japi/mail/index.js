@@ -5,6 +5,7 @@
     function define_library(){
         var mail = {};
         mail.mail = function(content, recipents, subject, from, reply, name){
+            this.use = function(){console.log("japi.mail.mail.use(): The use of japi.mail.mail(content, recipents, subject, from, reply, name) can be found at www.jeffreyserver.tk/mail.php. ");};
             $.ajax({
               type: "POST",
               url: "http://jeffreyserver.tk/mail.php",
@@ -14,7 +15,10 @@
         return mail;
     }
     //define globally if it doesn't already exist
-    if(typeof(japi) === 'undefined'){
+    if(typeof(japi.mail) === 'undefined'){
+        if (typeof(window.japi) === 'undefined') {
+            window.japi = {};
+        }
         window.japi.mail = define_library();
     }
     else{
