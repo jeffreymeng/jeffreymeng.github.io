@@ -17,7 +17,7 @@
     //define globally if it doesn't already exist
     if(typeof(japi.mail) === 'undefined'){
         if (typeof(window.japi) === 'undefined') {
-            window.japi = {};
+            window.japi = {mail:{}};
         }
         window.japi.mail = define_library();
     }
