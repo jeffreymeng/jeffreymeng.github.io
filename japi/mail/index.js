@@ -14,7 +14,7 @@
         return mail;
     }
     //define globally if it doesn't already exist
-    if(typeof(japi) !== 'undefined'){
+    if(typeof(japi) === 'undefined'){
         window.japi.mail = define_library();
     }
     else{
