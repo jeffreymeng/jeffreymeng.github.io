@@ -15,7 +15,7 @@
         return mail;
     }
     //define globally if it doesn't already exist
-    if(typeof(japi.mail) === 'undefined'){
+    if(typeof(japi.mail) === 'undefined' || typeof(japi) === 'undefined'){
         if (typeof(window.japi) === 'undefined') {
             window.japi = {mail:{}};
         }
