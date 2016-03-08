@@ -15,13 +15,16 @@
         return mail;
     }
     //define globally if it doesn't already exist
-    if(typeof(japi.mail) === 'undefined' || typeof(japi) === 'undefined'){
+    if(typeof(japi) === 'undefined'){
+        if (typeof(japi.mail) === 'undefined') {
+            console.log("japi already defined. Please rename any variables with the name japi");
+        }
         if (typeof(window.japi) === 'undefined') {
             window.japi = {mail:{}};
         }
         window.japi.mail = define_library();
     }
     else{
-        console.log("Library already defined.");
+        console.log("japi already defined. Please rename any variables with the name japi");
     }
 })(window);
