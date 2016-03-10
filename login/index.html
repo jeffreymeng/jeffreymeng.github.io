@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jeffrey Meng">
 
-    <title>Jeffrey Meng</title>
+    <title>Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,6 @@
     <style>
         body {
             background-color:#F5F5F5;
-
         }
         .login {
         	width:400px;
@@ -37,51 +36,110 @@
         	left:50%;
         	top:50%;
         	margin:-275px 0 0 -200px;
-
         }
     </style>
 </head>
 
 <body>
+    <script>
+    var forgot = false;
+    function f() {
+        $("#login-password").hide();
+        $("#f").hide()
+        $("#login-submit").html("Reset")
+        $("#header").attr("heading", "Please enter your email, and we will reset your password")
+        forgot = true;
+        window.forgot === true;
+
+    }
+    </script>
     <div class="container">
         <div class="row">
             <div class="box">
-                <paper-card heading="Login" elevation="2" class="login">
+                <paper-card heading="Login" elevation="2" class="login" id="header">
                     <div class="col-lg-12">
                         <paper-input label="email address" id="login-email"></paper-input>
                         <paper-input label="password" type="password" id="login-password"></paper-input>
                         <p class="text-danger" id="error"></p>
                         <paper-button style="background-color:#4285F5;color:white;" id="login-submit">Log In</paper-button>
+                        <a onclick="f()" id="f">Forgot Password?</a>
                     </div>
                 </paper-card>
             </div>
         </div>
     </div>
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
-    <script>
-        /* global Firebase */
-        // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
-        function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
-        var key = prompt("what is the key");
-        var fb = new Firebase("https://jeffreymeng.firebaseio.com/auth/valid");
-        fb.once("value", function(snapshot) {
-          var valid = snapshot.child(key).exists();
-          alert(valid);
-          
-        });
-    </script>
+
     <script type="text/javascript">
-    function generateToken() {
-        var mask = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        var result = '';
-        for (var i = 64; i > 0; --i) result += mask[Math.round(Math.random() * (mask.length - 1))];
-        return result;
+    
+    window.onkeyup = function(keycode) {
+        if (keycode.which === 13) {
+            loginOnClickAuth()
+        }
+    }
+    function keyGen() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < 15; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
+    }
+    function success(email, token) {
+        var fb = new Firebase("https://ccim2.firebaseio.com/keys/");
+        var username;
+        console.log(email)
+        switch (email) {
+            case "iandeanc@gmail.com":
+                username = "Ian";
+                break;
+            case "jeffmeng7@gmail.com":
+                username = "Jeffrey";
+                break;
+            case "lucaschen188@gmail.com":
+                username = "Lucas";
+                break;
+            case "chefdude14@gmail.com":
+                username = "Daniel";
+                break;
+            default:
+                username = "none";
+                break;
+        }
+        var x = keyGen();
+        console.log(username);
+        if (username === "none") {
+            $("#error").html("Sorry, but you are not a member");
+        } else {
+            fb.child(x).set(username);
+            var query = "?token=" + token + "&key=" + x + "&username=" + username;
+            if (getQuery("continue") === "ccim") {
+                window.location.href = "http://im.clubcoder.tk/refer.html" + query + "&continue=http%3A%2F%2Fim.clubcoder.tk%2F"
+            } else {
+                window.location.href = decodeURIComponent(getQuery("continue")) + (getQuery("query") !== null ? "&" + getQuery("query") : null)
+            }
+        }
+        
     }
     /* global Firebase */
+        // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+        function getQuery(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=c.exec(location.search);return null===n?"":decodeURIComponent(n[1].replace(/\+/g," "))}
+    /* global Firebase */
         var loginOnClickAuth = function() {
+            if (forgot === true) {
+var ref = new Firebase("https://ccim2.firebaseio.com");
+ref.resetPassword({
+  email : $("#login-email").val()
+}, function(error) {
+  if (error === null) {
+    $("#error").removeClass("text-danger").addClass("text-success").html("Password reset email sent successfully")
+  } else {
+   $("#error").html("Error sending password reset email:" +  error);
+  }
+});
+            } else {
             var password = $("#login-password").val();
             var email = $("#login-email").val();
-            var ref = new Firebase("https://jeffreymeng.firebaseio.com");
+            var ref = new Firebase("https://ccim2.firebaseio.com");
             ref.authWithPassword({
               email    : email,
               password : password
@@ -90,22 +148,15 @@
                 $("#error").html("Login Failed! " +  error);
                 console.log("Login Failed! " +  error);
               } else {
-                console.log("Authenticated successfully with payload:", authData);
-                var x = generateToken();
-                ref.child("auth").child("valid").child(x).set("true");
-                console.log(x);
-                
-                
+                success(email, authData.token)
               }
             });
-            
+            }
         };
         $("#login-submit").click(loginOnClickAuth);
         (function() {
             var elements = [
-                /*
-                "paper-badge",
-                */
+                // "paper-badge",
                 "paper-button",
                 "paper-card",
                 "paper-checkbox",
@@ -122,8 +173,7 @@
                 */
                 "paper-input",
                 "paper-item",
-                "paper-listbox"//,
-                /*
+                "paper-listbox"/*,
                 "paper-material",
                 "paper-menu",
                 "paper-menu-button",
