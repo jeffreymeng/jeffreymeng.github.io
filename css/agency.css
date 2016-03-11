@@ -715,11 +715,33 @@ section#contact:-ms-input-placeholder {
 section#contact .text-danger {
     color: #e74c3c;
 }
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+body {
+	min-height:100%;
+	position:relative;
+}
 
-footer {
-    padding: 25px 0;
-    text-align: center;
-    background-color:#F5F5F5;
+section {
+	padding-bottom:100px; /* Height of the footer element */
+}
+.footer {
+	background:#ffab62;
+	width:100%;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	    text-align: center;
+	        background-color:#F5F5F5;
+	            padding: 25px 0;
+
+
+
 }
 
 footer span.copyright {
