@@ -86,25 +86,6 @@
     }
     function success(email, token) {
         var fb = new Firebase("https://ccim2.firebaseio.com/keys/");
-        var username;
-        console.log(email)
-        switch (email) {
-            case "iandeanc@gmail.com":
-                username = "Ian";
-                break;
-            case "jeffmeng7@gmail.com":
-                username = "Jeffrey";
-                break;
-            case "lucaschen188@gmail.com":
-                username = "Lucas";
-                break;
-            case "chefdude14@gmail.com":
-                username = "Daniel";
-                break;
-            default:
-                username = "none";
-                break;
-        }
         var x = keyGen();
         console.log(username);
         if (username === "none") {

@@ -727,15 +727,17 @@ body {
 }
 
 section {
-	padding-bottom:100px; /* Height of the footer element */
+	padding-bottom:150px; /* Height of the footer element */
 }
-.footer {
-
+footer {
+	width:100%;
+	height:150px;
 	position:absolute;
-
-	    text-align: center;
-	        background-color:#F5F5F5;
-	            padding: 25px 0;
+	bottom:0;
+	left:0;
+    text-align: center;
+	background-color:#F5F5F5;
+    padding: 25px 0;
 
 
 
