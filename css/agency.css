@@ -715,24 +715,9 @@ section#contact:-ms-input-placeholder {
 section#contact .text-danger {
     color: #e74c3c;
 }
-html,
-body {
-	margin:0;
-	padding:0;
-	height:100%;
-}
-body {
-	min-height:100%;
-	position:relative;
-}
-
-section {
-	padding-bottom:150px; /* Height of the footer element */
-}
 footer {
 	width:100%;
 	height:150px;
-	position:absolute;
 	bottom:0;
 	left:0;
     text-align: center;
