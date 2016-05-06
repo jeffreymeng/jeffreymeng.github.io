@@ -87,8 +87,10 @@
                         <h2 class="section-heading">Jeffrey's Gift Card Authenticator Test page</h2>
                         <p>Please enter your username and password</p>
                         <input class="form-control" id="username" type="text">
+                        <br>
                         <input class="form-control" id="password" type="text">
-                        <button class="btn btn-succuess form-control" id="login">Login!</button>
+                        <br>
+                        <button class="btn btn-success form-control" id="login">Login!</button>
                         <p id="out"></p>
 
                     </div>
@@ -136,7 +138,7 @@ ref.authWithPassword({
   if (error) {
     $("#out").addClass("text-danger").html("Login Failed!", error);
   } else {
-    $("#out").addClass("text-succuess").html("Login Succuessful");
+    $("#out").addClass("text-success").html("Login Succuessful");
   }
 });
         </script>
