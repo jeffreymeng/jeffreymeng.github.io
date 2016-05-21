@@ -94,7 +94,10 @@ body {
   opacity: 0.6;
   transition: opacity ease 0.5s;
 }
-.c999 {
+.helper-link {
+  color:#666666;
+}
+.helper-link:hover {
   color:#999999;
 }
 .login-card a:hover {
