@@ -100,6 +100,12 @@ body {
 .helper-link:hover {
   color:#999999;
 }
+.helper-link:visited {
+  color:#666666;
+}
+.helper-link:active {
+  color:#999999;
+}
 .login-card a:hover {
   opacity: 1;
 }
