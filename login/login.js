@@ -5,6 +5,8 @@
       databaseURL: "https://jeffreyauth.firebaseio.com",
       storageBucket: "project-4619681356128759186.appspot.com",
   };
+  $("#googlelogin").click(function(){
+      
   firebase.initializeApp(config);
   var provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('https://www.googleapis.com/auth/userinfo.email');
@@ -27,3 +29,4 @@
   console.log(error)
   // ...
 });
+  })
