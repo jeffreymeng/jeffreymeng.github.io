@@ -85,7 +85,7 @@ body {
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
-.login-card a {
+.login-card a .login-helper-links {
   text-decoration: none;
   color: #666;
   font-weight: 400;
