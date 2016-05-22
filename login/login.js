@@ -6,6 +6,14 @@
       storageBucket: "project-4619681356128759186.appspot.com",
   };
   firebase.initializeApp(config);
+  $("#passwordlogin").click(function(){
+    firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+  })
   $("#googlelogin").click(function(){
       
           
