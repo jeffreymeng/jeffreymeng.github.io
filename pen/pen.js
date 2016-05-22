@@ -1,5 +1,4 @@
 (function(window) {
-    //I recommend this
     'use strict';
     var pen = {};
     var defualt = {};
