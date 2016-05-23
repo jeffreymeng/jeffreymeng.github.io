@@ -12,6 +12,7 @@
   var errorCode = error.code;
   var errorMessage = error.message;
   // ...
+  loggedin()
 });
   })
   $("#googlelogin").click(function(){
@@ -38,6 +39,7 @@
           console.log(error)
           // ...
         });
+        loggedin()
   })
   $("#githublogin").click(function(){
       
@@ -62,5 +64,6 @@
           console.log(error)
           // ...
         });
+        loggedin()
   })
   
