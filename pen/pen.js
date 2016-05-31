@@ -1,66 +1,119 @@
 (function(window) {
+    //I recommend this
     'use strict';
-    //private vars
-    var defualt = {};
-    // utils
-    var getcolor = function(type) {
-        return defualt[tyle].color || defualt.color || "black"
-    };
-    var warn = function(message) {
-        if (console.warn) console.warn("PenJS Warning: " + message); else console.log("PenJS Warning: " + message);
-    };
-
-
-
-
     var pen = {};
+    var defualt = {};
+    var getSetDescendantProp = function(obj, desc, value) {
+        var arr = desc ? desc.split(".") : [];
+
+        while (arr.length && obj) {
+            var comp = arr.shift();
+            var match = new RegExp("(.+)\\[([0-9]*)\\]").exec(comp);
+
+            // handle arrays
+            if ((match !== null) && (match.length == 3)) {
+                var arrayData = {
+                    arrName: match[1],
+                    arrIndex: match[2]
+                };
+                if (obj[arrayData.arrName] !== undefined) {
+                    if (typeof value !== 'undefined' && arr.length === 0) {
+                        obj[arrayData.arrName][arrayData.arrIndex] = value;
+                    }
+                    obj = obj[arrayData.arrName][arrayData.arrIndex];
+                }
+                else {
+                    obj = undefined;
+                }
+
+                continue;
+            }
+
+            // handle regular things
+            if (typeof value !== 'undefined') {
+                if (obj[comp] === undefined) {
+                    obj[comp] = {};
+                }
+
+                if (arr.length === 0) {
+                    obj[comp] = value;
+                }
+            }
+
+            obj = obj[comp];
+        }
+
+        return obj;
+    };
     pen.info = {
         name: "penJS",
-        version: "Private Alpha 1.0.0"
+        version: "Private Beta 1.0.0"
     };
     pen.canvas = function(id) {
-        var ctx = document.document.querySelectorAll(id).getContext("2d");
-        ctx.onMouseMove = function(callback) {
-            this.addEventListener('mousemove', function(evt) {
-                var rect = this.getBoundingClientRect();
-                callback(event.clientX - rect.left, event.clientY - rect.top);
-            }, false);
-        };
-        ctx.onMouseClick = function(handler, type) {
-            var ty;
-            if (type !== "mousedown" || type !== "mouseup" || type !== null) {
-                warn("The specified type was not a string with the content 'mousedown' or 'mouseup'. Resorting to defualt mousedown");
-                ty = "mousedown";
-            } else {
-                ty = type || "mousedown";
+        var ctx = document.getElementById(id).getContext("2d");
+        ctx.defualt = {};
+        ctx.getDefualt = function(item) {
+            if (item) {
+                if (item.indexOf(".") === -1) {
+                    return this.defualt[item];
+                }
+                else {
+                    return getSetDescendantProp(this.defualt, item);
+                }
             }
-            this.addEventListener(ty, function(evt) {
-var x = 0, y = 0;
-    var inner = true ;
-    do {
-        x += evt.offsetLeft;
-        y += evt.offsetTop;
-        var style = getComputedStyle(evt,null) ;
-        var borderTop = parseInt(style.getPropertyValue("border-top-width"),10);
-        var borderLeft = parseInt(style.getPropertyValue("border-left-width"),10);
-        y += borderTop ;
-        x += borderLeft ;
-        if (inner){
-          var paddingTop = parseInt(style.getPropertyValue("padding-top"),10);
-          var paddingLeft = parseInt(style.getPropertyValue("padding-left"),10);
-          y += paddingTop ;
-          x += paddingLeft ;
-        }
-        inner = false ;
-    } while (evt = evt.offsetParent);
-
-                handler(x, y);
-            }, false);
+            else {
+                return this.defualt;
+            }
         };
+        ctx.setDefualt = function(item, value) {
+            if (item.indexOf(".") === -1) {
+                this.defualt[item] = value;
+            }
+            else {
+                getSetDescendantProp(this.defualt, item, value);
+            }
 
+        };
+        ctx.rectangle = function(x, y, width, height, color) {
+            if (!color && width) {
+                color = this.defualt.rectangle.color || this.defualt.color || pen.getDefualt("color") || "black";
+            }
+            if (!height) {
+                height = this.defualt.rectangle.height || this.defualt.height || pen.getDefualt("height");
+            }
+            if (!width) {
+                width = this.defualt.rectangle.width || this.defualt.width || pen.getDefualt("width");
+                color = color || this.defualt.rectangle.color || this.defualt.color || pen.getDefualt("color") || "black";
+            }
+            
+            this.fillStyle = color;
+            this.fillRect(x,y,width,height);
+
+        };
+        ctx.circle = function(startx, starty, endx, endy) {
+            this.moveTo(startx,starty);
+            this.lineTo(endx,endy);
+            this.stroke();
+        };
         return ctx;
     };
-
+    
+    pen.getDefualt = function(name) {
+        if (name.indexOf("." > -1)) {
+            return getSetDescendantProp(defualt, name);
+        } else if (name) {
+            return defualt[name];
+        } else {
+            return defualt;
+        }
+    };
+    pen.setDefualt = function(name, value) {
+        if (name.indexOf("." > -1)) {
+            getSetDescendantProp(defualt, name, value);
+        } else {
+            defualt[name] = value;
+        }
+    };
     window.pen = pen;
 
 })(window);
