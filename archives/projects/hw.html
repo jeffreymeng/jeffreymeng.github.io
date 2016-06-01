@@ -187,8 +187,23 @@
     
             function callback(data) {
                 for (var i = 0; i < data.results.length; i++) {
-                    console.log(data.results[i]);
+                    var d = data.results[i].replace('"<div style=\"font-size:13.3333px;line-height:21.3333px\">', "").replace("</div>", "");
+                    var dateObj = new Date;
+                    var todayRegex = new RegExp('(' + String(dateObj.getMonth() + 1) + '\/' + dateObj.getDate + '\/' + String(dateObj.getYear()).substring(2, 4) + ')');
+                    var dateRegex = new RegExp('(.{1,2}\/.{1,2}\/.{2}).*','gm');
+                    var homeworkRegex = new RegExp('(.{1,2}\/.{1,2}\/.{2}).*','gm');
+                    if (todayRegex.test(d)) {
+                        console.log("today");
+                        console.log(d);
+                    } else if (dateRegex.test(d)){
+                        console.log("date");
+                        console.log(d);
+                    } else if (homeworkRegex.test(d)) {
+                        console.log("homework");
+                        console.log(d);
+                    }
                 }
+                
                 $("#status").html(highlight(JSON.stringify(data.results, null, 4)));
     
             }
