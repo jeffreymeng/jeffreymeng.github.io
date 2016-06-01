@@ -1,0 +1,51 @@
+<style>
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; height:350px;}
+
+.string { color: green; }
+.number { color: blue; }
+.boolean { color: purple; }
+.null { color: purple; }
+.key { color: red; }
+</style>
+<pre id="status"></pre>
+<script>
+  var urlToWebservice = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22https%3A%2F%2Fsites.google.com%2Fa%2Fcusdk8.org%2Fvillagec%2Fteacher-2%2Fteacher-2-about-me%2Fmath-6-7-homework%22%20and%20xpath%3D'%2F%2Ftd%5Bcontains(%40class%2C%22sites-layout-tile%20sites-tile-name-content-1%22)%5D%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv'%20&format=jsonp&diagnostics=false";
+function highlight(json) {
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
+
+function callback(data) {
+for (var i = 0;i < data.results.length;i ++) {
+    console.log(data.results[i]);
+}
+$("#status").html(highlight(JSON.stringify(data.results, null, 4)));
+
+}
+$.ajax({
+    type: "GET",
+    url: urlToWebservice,
+    contentType: "application/jsonp; charset=utf-8",
+    dataType: "jsonp",
+    success: callback,
+    error: function(xhr, textStatus, errorThrown) {
+        $("#status").val("Unavailable: " + textStatus);
+    }
+});
+
+
+</script>
