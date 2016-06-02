@@ -12,13 +12,7 @@ function loggedin() {
 
 }
 $("#passwordlogin").click(function() {
-	firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).then(function(result) {
-		// The signed-in user info.
-		var user = result.user;
-		console.log(user);
-			// ...
-		loggedin();
-	}).catch(function(error) {
+	firebase.auth().signInWithEmailAndPassword($("#username").val(), $("#password").val()).catch(function(error) {
 		// Handle Errors here.
 		var errorCode = error.code;
 		var errorMessage = error.message;
@@ -29,6 +23,14 @@ $("#passwordlogin").click(function() {
 		// ...
 		
 	});
+	var user = firebase.auth().currentUser;
+
+if (user) {
+	console.log(user);
+  loggedin();
+} else {
+  // No user is signed in.
+}
 });
 $("#googlelogin").click(function() {
 
