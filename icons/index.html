@@ -712,8 +712,12 @@ body {
       /* Uncomment for 3D effect */
       /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
     }
-    .btn {
+    .btn-primary {
       background-color:#286090;
+      color:#fff;
+    }
+    .btn-danger {
+      background-color:#d9534f;
       color:#fff;
     }
      </style>
@@ -743,12 +747,16 @@ body {
       <br>
       <input class="form-control btn btn-primary" type="button" id="s" value="Search!">
       <br>
+      <input class="form-control btn btn-danger" type="button" id="c" value="Cancel">
+      <br>
       <br>
       <label class="switch">
         <input type="checkbox" onclick="toggleCodes(this.checked)">show codes
       </label>
     </div>
     <div id="icons" class="container">
+      <br>
+      <br>
       <br>
       <br>
       <br>
@@ -4259,6 +4267,10 @@ body {
     <script src="/js/jquery.mark.min.js"></script>
     <script>
     /* global $ */
+    $("#c").click(function(){
+      $(".i-name").unmark();
+      $('.the-icons').show();
+    });
     function filter() {
       $(".i-name").unmark();
       $('.the-icons').show();
