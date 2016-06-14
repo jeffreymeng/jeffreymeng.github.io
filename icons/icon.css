@@ -19,7 +19,14 @@
   }
 }
 */
- 
+[class^="icon-"] {
+ display: inline-block;
+  font: normal normal normal 14px/1 "fontello";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
@@ -55,6 +62,111 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
+/* makes the font 33% larger relative to the icon container */
+.icon-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.icon-2x {
+  font-size: 2em;
+}
+.icon-3x {
+  font-size: 3em;
+}
+.icon-4x {
+  font-size: 4em;
+}
+.icon-5x {
+  font-size: 5em;
+}
+.icon-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+.icon-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+.icon-ul > li {
+  position: relative;
+}
+.icon-li {
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: 0.14285714em;
+  text-align: center;
+}
+.icon-li.icon-lg {
+  left: -1.85714286em;
+}
+.icon-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: .1em;
+}
+.icon-pull-left {
+  float: left;
+}
+.icon-pull-right {
+  float: right;
+}
+.icon.icon-pull-left {
+  margin-right: .3em;
+}
+.icon.icon-pull-right {
+  margin-left: .3em;
+}
+/* Deprecated as of 4.4.0 */
+/*
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+*/
+.icon.pull-left {
+  margin-right: .3em;
+}
+.icon.pull-right {
+  margin-left: .3em;
+}
+
+:root .icon-rotate-90,
+:root .icon-rotate-180,
+:root .icon-rotate-270,
+:root .icon-flip-horizontal,
+:root .icon-flip-vertical {
+  filter: none;
+}
+.icon-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.icon-stack-1x,
+.icon-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.icon-stack-1x {
+  line-height: inherit;
+}
+.icon-stack-2x {
+  font-size: 2em;
+}
+.icon-inverse {
+  color: #ffffff;
+}
+
 .icon-emo-sleep:before { content: '\e800'; } /* '' */
 .icon-emo-thumbsup:before { content: '\e801'; } /* '' */
 .icon-emo-devil:before { content: '\e802'; } /* '' */
