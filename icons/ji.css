@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../jeffreyicons/font/fontello.eot?5884130');
-  src: url('../jeffreyicons/font/fontello.eot?5884130#iefix') format('embedded-opentype'),
-       url('../jeffreyicons/font/fontello.woff2?5884130') format('woff2'),
-       url('../jeffreyicons/font/fontello.woff?5884130') format('woff'),
-       url('../jeffreyicons/font/fontello.ttf?5884130') format('truetype'),
-       url('../jeffreyicons/font/fontello.svg?5884130#fontello') format('svg');
+  src: url('./jeffreyicons/font/fontello.eot?5884130');
+  src: url('./jeffreyicons/font/fontello.eot?5884130#iefix') format('embedded-opentype'),
+       url('./jeffreyicons/font/fontello.woff2?5884130') format('woff2'),
+       url('./jeffreyicons/font/fontello.woff?5884130') format('woff'),
+       url('./jeffreyicons/font/fontello.ttf?5884130') format('truetype'),
+       url('./jeffreyicons/font/fontello.svg?5884130#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
