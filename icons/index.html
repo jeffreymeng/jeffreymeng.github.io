@@ -714,6 +714,7 @@ body {
     }
     .btn {
       background-color:#286090;
+      color:#fff;
     }
      </style>
      
@@ -741,6 +742,7 @@ body {
       <input class="form-control" id="search" type="text" placeholder="search">
       <br>
       <input class="form-control btn btn-primary" type="button" id="s" value="Search!">
+      <br>
       <br>
       <label class="switch">
         <input type="checkbox" onclick="toggleCodes(this.checked)">show codes
@@ -4248,6 +4250,7 @@ body {
     <script>
     /* global $ */
     function filter() {
+      $(".i-name").unmark();
       $('.the-icons').show();
       var s = $("#search").val();
         $(".i-name").mark(s, {
