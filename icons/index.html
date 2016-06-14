@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head><!--[if lt IE 9]><script language="javascript" type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <meta charset="UTF-8"><style>/*
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"></link>
+    <style>
+    
+    
+  
+    /*
  * Bootstrap v2.2.1
  *
  * Copyright 2012 Twitter, Inc
@@ -275,6 +281,7 @@ body {
       /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
     }
      </style>
+     
     <link rel="stylesheet" href="css/animation.css"><!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
     <script>
       function toggleCodes(on) {
@@ -295,6 +302,7 @@ body {
         Jeffrey Icons
          <small>fonts</small>
       </h1>
+      <input class="form-control" id="search" placeholder="search">
       <label class="switch">
         <input type="checkbox" onclick="toggleCodes(this.checked)">show codes
       </label>
@@ -3799,13 +3807,18 @@ body {
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.mark.min.js"></script>
     <script>
-    function filter(s) {
+    /* global $ */
+    function filter() {
+      $('.the-icons').show();
+      var s = $("#search").val();
         $(".i-name").mark(s, {
             "className": "highlight"
         });
-        $('.i-name').not($('mark').parent().parent()).hide();
+        
+        $('.the-icons').not($('mark').parent().parent()).hide();
 
     }
+    $("#search").keyup(filter);
     </script>
     <div class="container footer">Fonts by <a href="http://fontello.com">fontello.com</a></div>
   </body>
