@@ -16,9 +16,6 @@
       <p class="small">This font was created with<a href="http://fontastic.me/">Fontastic</a></p>
       <input class="form-control" id="search" type="text" placeholder="search">
       <br>
-      <input class="form-control btn btn-primary" type="button" id="s" value="Search!">
-      <br>
-      <input class="form-control btn btn-danger" type="button" id="c" value="Cancel">
       <h2>CSS mapping</h2>
       <ul class="glyphs css-mapping">
         <li>
@@ -36685,23 +36682,39 @@
     <script src="/js/jquery.mark.min.js"></script>
     <script>
     /* global $ */
-    $("#c").click(function(){
-      $("#s").html("");
-      $(".css-mapping > li > input").unmark();
-      $('.css-mapping > li > input').show();
-    });
-    function filter() {
-      $(".css-mapping > li > input").unmark();
-      $('.css-mapping > li > input').show();
-      var s = $("#search").val();
-        $(".css-mapping > li > input").mark(s, {
-            "className": "highlight"
-        });
-        
-        $('.css-mapping > li > input').not($('').parent()).hide();
+    var liElements = $.makeArray($('.css-mapping li').map(function(idx, elm) {
+  var jElm = $(elm);
+  var value = jElm.find('input').attr('value');
+  return {
+    jElm, value
+  };
+}));
+var fuse = new Fuse(liElements, {
+  keys: ["value"],
+  threshold: 0.2
+});
 
-    }
-    $("#s").click(filter);
+var search = $('#search');
+var filter = function() {
+  var target = search.val().trim();
+  if (target.length < 1) {
+    liElements.forEach(function(obj) {
+      obj.jElm.show();
+    });
+    return;
+  }
+  var results = fuse.search(target);
+
+  liElements.forEach(function(obj) {
+    obj.jElm.hide();
+  });
+  results.forEach(function(obj) {
+    obj.jElm.show();
+  });
+};
+
+
+search.keyup(filter);
     </script>
     <script>(function() {
   var glyphs, i, len, ref;
