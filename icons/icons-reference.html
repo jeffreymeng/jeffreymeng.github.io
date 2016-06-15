@@ -16,6 +16,7 @@
       <p class="small">This font was created with<a href="http://fontastic.me/">Fontastic</a></p>
       <input class="form-control" id="search" type="text" placeholder="search">
       <br>
+      <input class="form-control btn btn-primary" id="s" type="button" value="Search!">
       <h2>CSS mapping</h2>
       <ul class="glyphs css-mapping">
         <li>
@@ -36691,7 +36692,7 @@
 }));
 var fuse = new Fuse(liElements, {
   keys: ["value"],
-  threshold: 0.2
+  threshold: 0.4
 });
 
 var search = $('#search');
@@ -36714,8 +36715,8 @@ var filter = function() {
 };
 
 
-search.keyup(filter);
-    </script>
+$("#s").click(filter);
+</script>
     <script>(function() {
   var glyphs, i, len, ref;
 
