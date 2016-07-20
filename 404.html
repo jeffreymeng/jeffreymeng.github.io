@@ -149,7 +149,7 @@
         var file = decodeURIComponent(path[1]);
         var ext = file.split(".").pop();
         if (path[0] !== "file") {
-            window.location.href = "404error.html";
+            window.location.href = "/404error.html";
         }
         if (ext === "pdf") {
             $("#pdf").attr("src", "http://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(file));
