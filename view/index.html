@@ -161,9 +161,7 @@
         var path = window.location.pathname.split("/");
         var file = decodeURIComponent(path[2]);
         var extension = file.split(".").pop();
-        if (path[1] !== "file") {
-            window.location.href = "/404error.html";
-        }
+        
         if (extension === "pdf") {
             $("#pdfframe").attr("src", "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(file));
             $("#pdf").removeClass("hidden");
