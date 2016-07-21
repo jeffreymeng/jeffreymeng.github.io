@@ -153,24 +153,21 @@
         
         <script>
         var file = "";
-        if (getQuery("id") !== null && decodeURIComponent(("id").replace(" ")) !== "") {
+        if (getQuery("id") !== null && decodeURIComponent(getQuery("id").replace(" ")) !== "") {
             var idlist = {
                 "code":"https://"
             };
             if (idlist[id] !== null) {
                 file = idlist[id];
             } else {
-                file = decodeURIComponent(("file"));
+                file = decodeURIComponent(getQuery("file"));
             }
         } else  {
-            file = decodeURIComponent(("file"));
+            file = decodeURIComponent(getQuery("file"));
         }
-        var path = window.location.pathname.split("/");
-        var file = decodeURIComponent(path[2]);
+        var path = decodeURIComponent(getQuery("path"));
         var extension = file.split(".").pop();
-        if (path[1] !== "file") {
-            window.location.href = "/404error.html";
-        }
+        
         if (extension === "pdf") {
             $("#pdfframe").attr("src", "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(file));
             $("#pdf").removeClass("hidden");
