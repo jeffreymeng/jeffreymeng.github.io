@@ -92,9 +92,9 @@
                         <p>Supported File Types: pdf, markdown, or source code in in js, html, css, java, python or json</p>
                         <div class="input-group">
                             <span class="input-group-addon">File Link:</span>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="link">
                           <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">View!</button>
+                            <button class="btn btn-default" type="button" id="viewfile">View!</button>
                           </span>
                         </div><!-- /input-group -->
                         <div id="file">
@@ -152,6 +152,9 @@
         
         
         <script>
+        $("#viewFile").click(function(){
+            window.location.href = "https://code.jeffkmeng.com/view/?file=" + encodeURIComponent($("#link").val()); 
+        });
         var file = "";
         if (getQuery("id") !== null && decodeURIComponent(getQuery("id").replace(" ")) !== "") {
             var idlist = {
