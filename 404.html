@@ -136,7 +136,7 @@
         var file = decodeURIComponent(path[2]);
         var extension = file.split(".").pop();
         if (path[1] !== "file") {
-            window.location.href = "/view.html?file=" + encodeURIComponent(file) + "&path=" + encodeURIComponent(window.location.pathname);
+            window.location.href = "/view/?file=" + encodeURIComponent(file) + "&path=" + encodeURIComponent(window.location.pathname);
         }
         
         </script>
