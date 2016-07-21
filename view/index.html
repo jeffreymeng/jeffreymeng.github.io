@@ -21,7 +21,9 @@
         <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
-    
+        <!-- Prism Js monaki theme-->
+        <link rel="stylesheet" type="text/css" href="https://assets.jeffkmeng.com/prism/1.5.1/css/prism-okaidia.min.css">
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -87,7 +89,7 @@
                         <h2 class="section-heading">File Viewer:</h2>
                         <p>Jeffrey File Viewer version 1.0.0.</p>
                         <p>You can view another file. Just type in the URL to the file below!</p>
-                        <p>Supported File Types: pdf, markdown, or source code in in js, html, css, java, python, or json</p>
+                        <p>Supported File Types: pdf, markdown, or source code in in js, html, css, java, python, c, c++ or json</p>
                         <div class="input-group">
                             <span class="input-group-addon">File Link:</span>
                           <input type="text" class="form-control">
@@ -144,6 +146,8 @@
         <!-- Custom Theme JavaScript -->
         <script src="https://assets.jeffkmeng.com/agency/1.0.0/js/agency.js"></script>
         
+        
+        
         <script>
         var file = "";
         if (getQuery("id") !== null && decodeURIComponent(("id").replace(" ")) !== "") {
@@ -167,9 +171,14 @@
         if (extension === "pdf") {
             $("#pdfframe").attr("src", "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(file));
             $("#pdf").removeClass("hidden");
+        } else if (extension === "js" || extension === "css" ||  extension === "html" ||  extension === "java" ||  extension === "python" ||  extension === "json" || extension === "cpp" || extension === "cc" || extension === "c") {
+            
         }
         </script>
     
-    
+    <!-- PrismJS Core, and Plugins, and Code Placed after main script because noe all files use this -->
+        <script src="https://assets.jeffkmeng.com/prism/1.5.1/js/prism.min.js"></script>
+        <script src='https://assets.jeffkmeng.com/prism/1.5.1/js/prism-standard.min.js'></script>
+        <script src='https://assets.jeffkmeng.com/prism/1.5.1/js/prism-java.min.js'></script>
     </body>
 </html>
