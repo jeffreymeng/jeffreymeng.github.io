@@ -145,6 +145,19 @@
         <script src="https://assets.jeffkmeng.com/agency/1.0.0/js/agency.js"></script>
         
         <script>
+        var file = "";
+        if (getQuery("id") !== null && decodeURIComponent(("id").replace(" ")) !== "") {
+            var idlist = {
+                "code":"https://"
+            };
+            if (idlist[id] !== null) {
+                file = idlist[id];
+            } else {
+                file = decodeURIComponent(("file"));
+            }
+        } else  {
+            file = decodeURIComponent(("file"));
+        }
         var path = window.location.pathname.split("/");
         var file = decodeURIComponent(path[2]);
         var extension = file.split(".").pop();
