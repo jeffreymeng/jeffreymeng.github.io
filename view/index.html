@@ -146,20 +146,19 @@
         
         <script>
         var file = "";
-        if (getQuery("id") !== null && decodeURIComponent(("id").replace(" ")) !== "") {
+        if (getQuery("id") !== null && decodeURIComponent(getQuery("id").replace(" ")) !== "") {
             var idlist = {
                 "code":"https://"
             };
             if (idlist[id] !== null) {
                 file = idlist[id];
             } else {
-                file = decodeURIComponent(("file"));
+                file = decodeURIComponent(getQuery("file"));
             }
         } else  {
-            file = decodeURIComponent(("file"));
+            file = decodeURIComponent(getQuery("file"));
         }
-        var path = window.location.pathname.split("/");
-        var file = decodeURIComponent(path[2]);
+        var path = decodeURIComponent(getQuery("path"));
         var extension = file.split(".").pop();
         
         if (extension === "pdf") {
