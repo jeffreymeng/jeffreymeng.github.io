@@ -179,16 +179,16 @@
             $("#pdf").removeClass("hidden");
         } else if (extension === "js" || extension === "css" ||  extension === "html" ||  extension === "java" ||  extension === "python" ||  extension === "json") {
             $("#codebox").attr("data-src", file);
+            $.getScript("https://assets.jeffkmeng.com/prism/1.5.1/js/prism-core.min.js");
             $.getScript("https://assets.jeffkmeng.com/prism/1.5.1/js/plugins/prism-file-highlight.min.js");
+            $.getScript("https://assets.jeffkmeng.com/prism/1.5.1/js/plugins/prism-line-highlight.min.js");
             $("#code").removeClass("hidden");
         }
         </script>
     
     <!-- PrismJS Core, and Plugins, and Code Placed after main scripts because not all files use this -->
-        <script src="https://assets.jeffkmeng.com/prism/1.5.1/js/prism-core.min.js"></script>
         <script src='https://assets.jeffkmeng.com/prism/1.5.1/js/prism-common.min.js'></script>
         <script src='https://assets.jeffkmeng.com/prism/1.5.1/js/prism-python.min.js'></script>
         <script src='https://assets.jeffkmeng.com/prism/1.5.1/js/prism-json.min.js'></script>
-        <script src='https://assets.jeffkmeng.com/prism/1.5.1/js/plugins/prism-line-highlight.min.js'></script>
     </body>
 </html>
