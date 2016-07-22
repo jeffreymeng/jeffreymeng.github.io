@@ -163,8 +163,8 @@
                 "jquery3.1.0.js":"https://code.jquery.com/jquery-3.1.0.js",
                 "jquery1.12.4.js":"https://code.jquery.com/jquery-1.12.4.js"
             };
-            if (idlist[id] !== null) {
-                file = idlist[id];
+            if (idlist[getQuery("id")] !== null) {
+                file = idlist[getQuery("id")];
             } else {
                 file = decodeURIComponent(getQuery("file"));
             }
