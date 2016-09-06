@@ -1,11 +1,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<div id="out"></div>
+<div id="repoBox">
+
+  <input class="search" placeholder="Search" />
+  <button class="sort" data-sort="name">
+    Sort
+  </button>
+
+  <ul class="list" id="repos">
+    
+  </ul>
+
+</div>
 <script>
-/* global $ */
+/* global $ List*/
+
+
+
+
 $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
     console.log(data);
     for (var i = 0; i < data.length; i ++) {
-        $("#out").append("<p>" + data[i].name + "</p>");
+        $("#out").append("<li><a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>" + data[i].name + "</a></li>");
     }
+    var options = {
+  valueNames: ['name']
+};
+
+new List('repos', options);
 });
+
 </script>
