@@ -5,9 +5,9 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <ul class="list list-group" id="repos">
+    <div class="list list-group" id="repos">
 
-    </ul>
+    </div>
 
 <script>
     /* global $ */
@@ -18,7 +18,7 @@
     $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
         console.log(data);
         for (var i = 0; i < data.length; i++) {
-            $("#out").append("<li class='list-group-item'><a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>" + data[i].name + "</a></li>");
+            $("#out").append("<a href='https://github.com/jeffreymeng/" + data[i].name + "' class='list-group-item'>" + data[i].name + "</a>");
         }
 
     });
