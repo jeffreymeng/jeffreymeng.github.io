@@ -1,14 +1,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <div id="repoBox">
 
-  <input class="search" placeholder="Search" />
-  <button class="sort" data-sort="name">
+  <input class="search form-control" placeholder="Search" />
+  <button class="sort btn form-control btn-primary" data-sort="name">
     Sort
   </button>
 
-  <ul class="list" id="repos">
+  <ul class="list list-group" id="repos">
     
   </ul>
 
@@ -22,7 +27,7 @@
 $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
     console.log(data);
     for (var i = 0; i < data.length; i ++) {
-        $("#out").append("<li><a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>" + data[i].name + "</a></li>");
+        $("#out").append("<li class='list-group-item'><a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>" + data[i].name + "</a></li>");
     }
     var options = {
   valueNames: ['name']
@@ -32,3 +37,5 @@ new List('repos', options);
 });
 
 </script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
