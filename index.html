@@ -18,7 +18,7 @@
     $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
         console.log(data);
         for (var i = 0; i < data.length; i++) {
-            $("#out").append("<a href='https://github.com/jeffreymeng/" + data[i].name + "' class='list-group-item'>" + data[i].name + "</a>");
+            $("#repos").append("<a href='https://github.com/jeffreymeng/" + data[i].name + "' class='list-group-item'>" + data[i].name + "</a>");
         }
 
     });
