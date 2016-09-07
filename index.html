@@ -74,12 +74,25 @@ var fuzzyOptions = {
             
             //console.log(data);
             for (var i = 0; i < data.length; i++) {
-                $("#repos").append("<p class='list-group-item'><span class='name'>" + data[i].name + "</span> (<a href='https://github.com/jeffreymeng/" + data[i].name + "'>Github</a> | <a href='https://code.jeffkmeng.com/" + data[i].name  + "'>Website</a>)</p>");
+                $("#repos").append("<p class='list-group-item'><span class='name'>" + data[i].name + "</span> (<a href='https://github.com/jeffreymeng/" + data[i].name + "'>Github</a> | <a href='" + getRepoURL(data[i].name) + "'>Website</a>)</p>");
             }
             
             
             new List('repo-box', options);
         });
+        function getRepoURL(name, callback){
+            var url = "https://code.jeffkmeng.com/" + name;
+        $.ajax({
+  method: "GET",
+  url: url,
+  success:function(){
+    callback(url);
+  },
+  fail:function(){
+      callback("https://code.jeffkmeng.com/details/" + name);
+  }
+});
+}
     </script>
 </body>
 
