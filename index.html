@@ -74,7 +74,10 @@ var fuzzyOptions = {
             
             //console.log(data);
             for (var i = 0; i < data.length; i++) {
-                $("#repos").append("<p class='list-group-item'><span class='name'>" + data[i].name + "</span> (<a href='https://github.com/jeffreymeng/" + data[i].name + "'>Github</a> | <a href='" + getRepoURL(data[i].name) + "'>Website</a>)</p>");
+                getRepoURL(data[i].name, function(websiteURL){
+                    $("#repos").append("<p class='list-group-item'><span class='name'>" + data[i].name + "</span> (<a href='https://github.com/jeffreymeng/" + data[i].name + "'>Github</a> | <a href='" + websiteURL + "'>Website</a>)</p>");
+
+                });
             }
             
             
