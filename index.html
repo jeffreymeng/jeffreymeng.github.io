@@ -38,7 +38,7 @@
     <script src="https://assets.jeffkmeng.com/list/1.2.0/js/list.pagination.min.js"></script>
     <script src="https://assets.jeffkmeng.com/list/1.2.0/js/list.fuzzysearch.min.js"></script>
     <script>
-        /* global $ List ListFuzzySearch ListPagination atob*/
+        /* global $ List ListFuzzySearch ListPagination atob localStorage*/
 
 
 
@@ -70,7 +70,29 @@ var fuzzyOptions = {
                     ListPagination(paginationBottomOptions)
                 ]
             };
-        $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
+            
+            $.ajax({
+            url: "https://api.github.com/users/jeffreymeng/repos",
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'If-Modified-Since': localStorage.getItem("last-modified")
+            },
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+               ajax1callback(result)
+            },
+            error: function (error) {
+                
+            }
+        });
+        function ajax1callback(data) {
+            if (data.status === 304) {
+                data = localStorage.getItem("data1")
+            } else {
+                localStorage.setItem("data1", data)
+            }
+            localStorage.setItem("last-modified", data.getResponseHeader("Last-Modified"));
             //console.log(data);
             for (var i = 0; i < data.length; i++) {
                 $("#repos").append("<p class='list-group-item'>" + data[i].name + " (<a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>Github</a><span id='" + data[i].name + "-otherinfo'></span>)</p>");
@@ -92,7 +114,7 @@ var fuzzyOptions = {
             }
             
             new List('repo-box', options);
-        });
+        }
     </script>
 </body>
 
