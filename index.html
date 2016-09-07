@@ -73,7 +73,7 @@ var fuzzyOptions = {
         $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
             //console.log(data);
             for (var i = 0; i < data.length; i++) {
-                $("#repos").append("<p class='list-group-item'>" + data[i].name + "<a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>Github</a><span id='otherinfo'></span></p>");
+                $("#repos").append("<p class='list-group-item'>" + data[i].name + " (<a href='https://github.com/jeffreymeng/" + data[i].name + "' class='name'>Github</a><span id='" + data[i].name + "-otherinfo'></span>)</p>");
             }
             for (var i = 0; i < data.length; i++) {
                 
@@ -83,7 +83,7 @@ var fuzzyOptions = {
                     } else {
                         $.getJSON("https://api.github.com/repos/jeffreymeng/" + data[i].name + "/branches/gh-pages", null, function(data){
                             if (data.name !== null) {
-                                $("#otherinfo").html(" | <a href='https://code.jeffkmeng.com/" + data[i].name + "'>Website</a>");
+                                $("#" + data[i].name + "-otherinfo").html(" | <a href='https://code.jeffkmeng.com/" + data[i].name + "'>Website</a>");
                             }
                         });
                         
