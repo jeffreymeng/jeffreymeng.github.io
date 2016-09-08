@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="https://assets.jeffkmeng.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <title>Jeffrey Code</title>
+    <style>
+        .hidden{
+            display:none;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,6 +18,7 @@
         <div class="col-lg-12">
             <h1>Jeffrey's Code Archive</h1>
             <p class="text-muted">A simple template for all projects.</p>
+            <p class="text-primary hidden" id="cached">Currently using cached version. Cached as of Thursday, September 8 2016 4:35 P.M. PST</p>
             <div class="container col-lg-12" id="repo-box">
                 <input class="fuzzy-search form-control" placeholder="Search" />
 
@@ -71,12 +77,12 @@
             ]
         };
         $.ajax({
-            url: "https://api.github.com/users/jeffreymeng/repos",
+            url: "https://adfa.tk",//"https://api.github.com/users/jeffreymeng/repos",
             dataType: "json",
             success: action,
             fail: function() {
                 $.ajax({
-                    //incase api limit reached, use older cached version as it appeared at 6:00 PM 9/7/2016 PST
+                    //incase api limit reached or other error, use older cached version as it appeared at Thursday, September 8 2016 4:35 P.M. PST
                     url: "backupData.json",
                     dataType: "json",
                     success: action,
