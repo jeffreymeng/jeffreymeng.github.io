@@ -47,14 +47,15 @@
     </div>
     <script src="https://assets.jeffkmeng.com/jquery/2.2.4/js/jquery.min.js"></script>
     <script>
+    /* global $ */
         var path = window.location.pathname.split("/");
         if (path[1] === "details" && path[2] !== null) {
 
                     var name = window.location.pathname.split("/")[2];
                     $(".name").html(name);
                     $(".link").attr("href", "https://github.com/jeffreymeng/" + name);
-                    $(".download-zip").attr("href", "https://github.com/jeffreymeng/" + name);
-                    $(".download-tarball").attr("href", "https://github.com/jeffreymeng/" + name);
+                    $(".download-zip").attr("href", "https://github.com/jeffreymeng/" + name + "/archive/gh-pages.zip");
+                    $(".download-tarball").attr("href", "https://github.com/jeffreymeng/" + name + "/archive/gh-pages.tar.gz");
                     
                     $("#container-main").removeClass("hidden");
                 
@@ -71,7 +72,7 @@
         }
         else {
             
-            window.location.href = "404error.html";
+            window.location.href = "404error.html?page=" + encodeURIComponent(window.location.href);
         }
     </script>
     <script src="https://assets.jeffkmeng.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
