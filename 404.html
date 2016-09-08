@@ -49,26 +49,20 @@
     <script>
         var path = window.location.pathname.split("/");
         if (path[1] === "details" && path[2] !== null) {
-            $.ajax({
-                method: "GET",
-                url: "https://github.com/jeffreymeng/" + path[2],
-                success: function() {
+
                     var name = window.location.pathname.split("/")[2];
                     $(".name").html(name);
                     $(".link").attr("href", "https://github.com/jeffreymeng/" + name);
                     $(".download-zip").attr("href", "https://github.com/jeffreymeng/" + name);
                     $(".download-tarball").attr("href", "https://github.com/jeffreymeng/" + name);
                     
-                    $("#container-main").removeClass("hidden")
-                },
-                fail: function() {
-                    $("#container-error").removeClass("hidden")
-                }
-            });
+                    $("#container-main").removeClass("hidden");
+                
 
         }
         else {
-            $("#container-error").removeClass("hidden")
+            
+            window.location.redirect = "404error.html";
         }
     </script>
     <script src="https://assets.jeffkmeng.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
