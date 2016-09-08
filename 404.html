@@ -60,9 +60,18 @@
                 
 
         }
+        else if (window.location.search === "?ref=jeffrey-code-home-page-list-item") {
+             var name = window.location.pathname.split("/")[1];
+                    $(".name").html(name);
+                    $(".link").attr("href", "https://github.com/jeffreymeng/" + name);
+                    $(".download-zip").attr("href", "https://github.com/jeffreymeng/" + name);
+                    $(".download-tarball").attr("href", "https://github.com/jeffreymeng/" + name);
+                    
+                    $("#container-main").removeClass("hidden");
+        }
         else {
             
-            window.location.redirect = "404error.html";
+            window.location.href = "404error.html";
         }
     </script>
     <script src="https://assets.jeffkmeng.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
