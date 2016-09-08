@@ -42,48 +42,61 @@
 
 
 
-var fuzzyOptions = {
-                searchClass: "fuzzy-search",
-                location: 0,
-                distance: 100,
-                threshold: 0.4,
-                multiSearch: true
-            };
-            var paginationTopOptions = {
-                name: "pagination-top",
-                paginationClass: "pagination-top",
-                outerWindow: 2
-            };
-            var paginationBottomOptions = {
-                name: "pagination-bottom",
-                paginationClass: "pagination-bottom",
-                innerWindow: 3,
-                left: 2,
-                right: 4
-            };
-            var options = {
-                valueNames: ['name'],
-                page: 7,
-                plugins: [
-                    ListFuzzySearch(fuzzyOptions),
-                    ListPagination(paginationTopOptions),
-                    ListPagination(paginationBottomOptions)
-                ]
-            };
-        $.getJSON("https://api.github.com/users/jeffreymeng/repos", null, function(data) {
-            
-            //console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                
-                    $("#repos").append("<p class='list-group-item'><span class='name'>" + data[i].name + "</span> (<a href='https://github.com/jeffreymeng/" + data[i].name + "'>Github</a> | <a href='https://code.jeffkmeng.com/" + data[i].name + "'>Website</a>)</p>");
+        var fuzzyOptions = {
+            searchClass: "fuzzy-search",
+            location: 0,
+            distance: 100,
+            threshold: 0.4,
+            multiSearch: true
+        };
+        var paginationTopOptions = {
+            name: "pagination-top",
+            paginationClass: "pagination-top",
+            outerWindow: 2
+        };
+        var paginationBottomOptions = {
+            name: "pagination-bottom",
+            paginationClass: "pagination-bottom",
+            innerWindow: 3,
+            left: 2,
+            right: 4
+        };
+        var options = {
+            valueNames: ['name'],
+            page: 7,
+            plugins: [
+                ListFuzzySearch(fuzzyOptions),
+                ListPagination(paginationTopOptions),
+                ListPagination(paginationBottomOptions)
+            ]
+        };
+        $.ajax({
+            url: "https://api.github.com/users/jeffreymeng/repos",
+            dataType: "json",
+            success: action,
+            fail: function() {
+                $.ajax({
+                    url: "backupData.json",
+                    dataType: "json",
+                    success: action,
 
-                
+                });
             }
-            
-            
-            new List('repo-box', options);
         });
 
+        function action(data) {
+
+            //console.log(data);
+            for (var i = 0; i < data.length; i++) {
+
+                $("#repos").append("<p class='list-group-item'><span class='name'>" + data[i].name + "</span> (<a href='https://github.com/jeffreymeng/" + data[i].name + "'>Github</a> | <a href='https://code.jeffkmeng.com/" + data[i].name + "'>Website</a>)</p>");
+
+
+            }
+
+
+            new List('repo-box', options);
+        }
     </script>
 </body>
 
