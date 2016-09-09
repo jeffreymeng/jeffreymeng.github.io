@@ -17,34 +17,22 @@
     <div class="container hidden" id="container-main">
         <div class="col-lg-12">
 
-            <h1>Details about <a class="link">jeffreymeng/<span class="name"></a></a></h1>
+            <h1>Details about <a class="link">jeffreymeng/<span class="name"></span></a></h1>
 
             <a class="link">View project on Github</a>
             <hr>
 
-            <h3>Download <span class="name"></a></h3>
+            <h3>Download <a class="link">jeffreymeng/<span class="name"></span></a></h3>
             <div class="btn-group">
                 <a class="download-zip"><button type="button" class="btn btn-default">Zip file</button></a>
                 <a class="download-tarball"><button type="button" class="btn btn-default">Tarball</button></a>
             </div>
             <hr>
-            <p><a class="link-fork">Fork <span class="name"></a></a> | <a class="link-star">Star <span class="name"></a></a>
-            </p>
 
 
         </div>
     </div>
-    <div class="container hidden" id="container-error">
-        <div class="col-lg-12">
-
-            <h1>404 Error</h1>
-
-            <p>The page you are trying to view dosent exist at this location anymore. It may have been moved, deleted, or was never created.
-            If you typed in a link to view this page, check your spelling.</p>
-
-
-        </div>
-    </div>
+  
     <script src="https://assets.jeffkmeng.com/jquery/2.2.4/js/jquery.min.js"></script>
     <script>
     /* global $ */
@@ -65,8 +53,8 @@
              var name = window.location.pathname.split("/")[1];
                     $(".name").html(name);
                     $(".link").attr("href", "https://github.com/jeffreymeng/" + name);
-                    $(".download-zip").attr("href", "https://github.com/jeffreymeng/" + name);
-                    $(".download-tarball").attr("href", "https://github.com/jeffreymeng/" + name);
+                    $(".download-zip").attr("href", "https://github.com/jeffreymeng/" + name + "/archive/gh-pages.zip");
+                    $(".download-tarball").attr("href", "https://github.com/jeffreymeng/" + name + "/archive/gh-pages.tar.gz");
                     
                     $("#container-main").removeClass("hidden");
         }
