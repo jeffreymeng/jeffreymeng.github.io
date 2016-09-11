@@ -7,8 +7,8 @@
 
     <title>Jeffrey Code</title>
     <style>
-        .hidden{
-            display:none;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -80,10 +80,21 @@
             url: "https://api.github.com/users/jeffreymeng/repos",
             dataType: "json",
             success: action,
+            statusCode: {
+                403: function() {
+                    $.ajax({
+
+                        //incase api limit reached or other error, use older cached version as it appeared at Thursday, September 8 2016 4:35 P.M. PST
+                        url: "backupData.json",
+                        dataType: "json",
+                        success: action,
+
+                    });
+                }
+            },
             fail: function() {
-                alert("x");
                 $.ajax({
-                    
+
                     //incase api limit reached or other error, use older cached version as it appeared at Thursday, September 8 2016 4:35 P.M. PST
                     url: "backupData.json",
                     dataType: "json",
