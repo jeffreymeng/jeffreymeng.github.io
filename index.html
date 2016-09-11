@@ -81,7 +81,9 @@
             dataType: "json",
             success: action,
             fail: function() {
+                alert("x");
                 $.ajax({
+                    
                     //incase api limit reached or other error, use older cached version as it appeared at Thursday, September 8 2016 4:35 P.M. PST
                     url: "backupData.json",
                     dataType: "json",
