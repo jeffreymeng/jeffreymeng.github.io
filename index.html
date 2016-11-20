@@ -17,8 +17,8 @@
     <div class="container">
         <div class="col-lg-12">
             <h1>Jeffrey's Code Archive</h1>
-            <p class="text-muted">A simple template for all projects.</p>
-            <p class="text-primary hidden" id="cached">You have exceeded the maxinum number of github api requests in an hour. Currently using cached version. Cached as of Sunday, September 11 2016 9:03 A.M. PST</p>
+            <p class="text-muted">Uses the github API.</p>
+            <p class="text-primary hidden" id="cached">You have exceeded the maxinum number of github api requests in an hour. Currently using cached version. Cached as of Saturday, November 19 2016  at 11:02 P.M. PST</p>
             <div class="container col-lg-12" id="repo-box">
                 <input class="fuzzy-search form-control" placeholder="Search" />
 
@@ -84,7 +84,7 @@
                 403: function() {
                     $.ajax({
 
-                    //incase api limit reached or other error, use older cached version as it appeared on October 22 2016 5:31 P.M. PST
+                    //incase api limit reached or other error, use older cached version as it appeared on November 19 2016 11:02 P.M. PST
                         url: "backupData.json",
                         dataType: "json",
                         success: faction,
@@ -95,7 +95,7 @@
             fail: function() {
                 $.ajax({
 
-                    //incase api limit reached or other error, use older cached version as it appeared on October 22 2016 5:31 P.M. PST
+                    //incase api limit reached or other error, use older cached version as it appeared on November 19 2016 11:02 P.M. PST
                     url: "backupData.json",
                     dataType: "json",
                     success: faction,
