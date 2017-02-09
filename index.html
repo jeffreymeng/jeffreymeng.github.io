@@ -77,7 +77,7 @@
             ]
         };
         $.ajax({
-            url: "https://api.github.com/users/jeffreymeng/repos?per_page=1000&type=all",
+            url: "https://api.github.com/users/jeffreymeng/repos?per_page=1000&type=owner",
             dataType: "json",
             success: action,
             statusCode: {
