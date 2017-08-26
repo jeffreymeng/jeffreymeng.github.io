@@ -84,15 +84,20 @@
             ]
         };
         $.ajax({
-            url: "https://api.github.com/users/jeffreymeng/repos",
+            url: "https://api.github.com/users/jeffreymeng/repos?per_page=1000&type=owner",
             dataType: "json",
             success: action,
             statusCode: {
                 403: function() {
                     $.ajax({
 
+<<<<<<< HEAD
                     //incase api limit reached or other error, use older cached version as it appeared on June 4 2011 9:05 P.M. PST
                         url: "backupData.json",
+=======
+                    //incase api limit reached or other error, use older cached version as it appeared on Feb 9 2017 11:10 A.M. PST
+                        url: "backupData.min.json",
+>>>>>>> 2d298b476aeffb46f6db6add49fd2b4eb5b1ed8c
                         dataType: "json",
                         success: faction,
 
@@ -102,8 +107,13 @@
             fail: function() {
                 $.ajax({
 
+<<<<<<< HEAD
                     //incase api limit reached or other error, use older cached version as it appeared on June 4 2011 9:05 P.M. PST
                     url: "backupData.json",
+=======
+                    //incase api limit reached or other error, use older cached version as it appeared on Feb 9 2017 11:10 A.M. PST
+                    url: "backupData.min.json",
+>>>>>>> 2d298b476aeffb46f6db6add49fd2b4eb5b1ed8c
                     dataType: "json",
                     success: faction,
 
